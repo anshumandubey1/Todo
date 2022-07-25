@@ -1,0 +1,17 @@
+spring:
+  config:
+    import: "optional:secrets.yml"
+
+server:
+  port: 8080
+
+  error:
+    include-exception: false
+    include-binding-errors: always
+    include-stacktrace: never
+    include-message: always
+
+logging:
+  level:
+    org:
+      springframework: DEBUG

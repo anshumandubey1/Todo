@@ -8,7 +8,7 @@ import com.anshuman.todo.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,15 +22,14 @@ public class TaskService {
   public TaskService(TaskRepository taskRepository) {this.taskRepository = taskRepository;}
 
   private void isAuthorized(Task task) {
-//    String userId = SecurityContextHolder.getContext().getAuthentication().getName();
-//    if(!task.getUserId().equals(userId))
-//      throw new UnauthorizedAccessException();
+    String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+    if(!task.getUserId().equals(userId))
+      throw new UnauthorizedAccessException();
   }
 
   public Page<Task> findAll(String userId, int page) {
     Pageable pageable = Pageable.ofSize(Constants.PAGE_SIZE).withPage(page);
-//    return taskRepository.findByUserId(userId, pageable);
-    return taskRepository.findAll(pageable);
+    return taskRepository.findByUserId(userId, pageable).orElseThrow();
   }
 
   public Task findById(String id) {

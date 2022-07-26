@@ -1,9 +1,17 @@
 package com.anshuman.todo.model;
 
 import jakarta.validation.constraints.NotNull;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.CollectionCallback;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 @Document("users")
@@ -18,9 +26,18 @@ public class User {
 
   @NotNull
   private String name;
+  private String password;
 
   @NotNull
   private String avatar;
+
+  private Collection<GrantedAuthority> grantedAuthoritiesList = new ArrayList<>();
+
+  @CreatedDate
+  private Instant createdAt;
+
+  @LastModifiedDate
+  private Instant updatedAt;
 
   public User() {
   }
@@ -61,5 +78,21 @@ public class User {
 
   public void setAvatar(String avatar) {
     this.avatar = avatar;
+  }
+
+  public Collection<GrantedAuthority> getGrantedAuthoritiesList() {
+    return grantedAuthoritiesList;
+  }
+
+  public void setGrantedAuthoritiesList(Collection<GrantedAuthority> grantedAuthoritiesList) {
+    this.grantedAuthoritiesList = grantedAuthoritiesList;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 }

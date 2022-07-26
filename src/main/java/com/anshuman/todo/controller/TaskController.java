@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,7 +22,7 @@ import java.net.URI;
 @RestController
 public class TaskController {
 
-  public static final String USERNAME = new ObjectId().toString();
+//  public static final String USERNAME = new ObjectId().toString();
 
   private final Logger logger = LoggerFactory.getLogger(TaskController.class);
   TaskService taskService;
@@ -40,11 +40,11 @@ public class TaskController {
   }
 
   private String getUserId() {
-//    logger.info(SecurityContextHolder.getContext().getAuthentication().getName());
-//    logger.info(SecurityContextHolder.getContext().getAuthentication().getDetails().toString());
-//    logger.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
-//    return SecurityContextHolder.getContext().getAuthentication().getName();
-    return USERNAME;
+    logger.info(SecurityContextHolder.getContext().getAuthentication().getName());
+    logger.info(SecurityContextHolder.getContext().getAuthentication().getDetails().toString());
+    logger.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+    return SecurityContextHolder.getContext().getAuthentication().getName();
+//    return USERNAME;
   }
 
   @GetMapping("/{id}")

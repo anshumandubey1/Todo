@@ -2,6 +2,13 @@ spring:
   config:
     import: "optional:secrets.yml"
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwks_uri: https://www.googleapis.com/oauth2/v3/certs
+
 server:
   port: 8080
 

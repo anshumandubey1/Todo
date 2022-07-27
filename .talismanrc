@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: src/main/java/com/anshuman/todo/model/User.java
+  checksum: 9a6129fba52d9f1a21ab0773f777d604af69686be6770c7f22dea16047f30267
+version: ""

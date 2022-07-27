@@ -1,6 +1,6 @@
 package com.anshuman.todo.service;
 
-import com.anshuman.todo.config.Constants;
+import com.anshuman.todo.Constants;
 import com.anshuman.todo.exception.InvalidIdException;
 import com.anshuman.todo.exception.UnauthorizedAccessException;
 import com.anshuman.todo.model.Task;

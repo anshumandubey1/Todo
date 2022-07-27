@@ -22,5 +22,5 @@ logging:
   level:
     org:
       springframework: INFO
-      springframework.data.mongodb: DEBUG
-      springframework.security.oauth2: DEBUG
+#      springframework.data.mongodb: DEBUG
+#      springframework.security.oauth2: DEBUG
